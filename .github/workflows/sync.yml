@@ -1,0 +1,24 @@
+name: Sync
+
+on:
+  schedule:
+  - cron:  "10 */4 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - sync
+
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@master
+
+    - name: Sync repository
+      uses: repo-sync/github-sync@v2
+      with:
+        source_repo: "https://git.savannah.gnu.org/git/dmidecode.git"
+        source_branch: "master"
+        destination_branch: "master"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
