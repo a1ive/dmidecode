@@ -148,12 +148,13 @@ static void dmi_dell_hotkeys(const struct dmi_header *h)
 {
 	int count = (h->length - 0x04) / 0x04;
 	u8 *hotkey = h->data + 0x04;
+	int i;
 
 	if (!count)
 		return;
 
 	pr_list_start("Hotkey Mappings", NULL);
-	for (int i = 0; i < count; i++)
+	for (i = 0; i < count; i++)
 	{
 		pr_list_item("Scancode 0x%04hx -> Keycode 0x%04hx",
 			     WORD(hotkey + 0x00), WORD(hotkey + 0x02));
@@ -175,6 +176,7 @@ static void dmi_dell_indexed_io_access(const struct dmi_header *h)
 	u8 *data = h->data;
 	u8 *token;
 	u8 type;
+	int i;
 
 	pr_attr("Index Port", "0x%04hx", WORD(data + 0x04));
 	pr_attr("Data Port", "0x%04hx", WORD(data + 0x06));
@@ -195,7 +197,7 @@ static void dmi_dell_indexed_io_access(const struct dmi_header *h)
 		return;
 
 	pr_list_start("Tokens", NULL);
-	for (int i = 0; i < tokens - 1; i++)
+	for (i = 0; i < tokens - 1; i++)
 	{
 		token = data + 0x0C + 0x05 * i;
                 pr_list_item("0x%04hx (location 0x%02hhx, AND mask 0x%02hhx, OR mask 0x%02hhx)",
@@ -209,6 +211,7 @@ static void dmi_dell_token_interface(const struct dmi_header *h)
 	int tokens = (h->length - 0x0B) / 0x06;
 	u8 *data = h->data;
 	u8 *token;
+	int i;
 
 	pr_attr("Command I/O Address", "0x%04x", WORD(data + 0x04));
 	pr_attr("Command I/O Code", "0x%02x", data[0x06]);
@@ -221,7 +224,7 @@ static void dmi_dell_token_interface(const struct dmi_header *h)
 		return;
 
 	pr_list_start("Tokens", NULL);
-	for (int i = 0; i < tokens - 1; i++)
+	for (i = 0; i < tokens - 1; i++)
 	{
 		token = data + 0x0B + 0x06 * i;
 		pr_list_item("0x%04hx (location 0x%04hx, value 0x%04hx)",
