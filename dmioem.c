@@ -583,7 +583,7 @@ static void dmi_hp_216_version(u8 format, u8 *data)
 		pr_attr(name, "%d", data[0]);
 		break;
 	case 14:
-		pr_attr(name, "%d.%d.%d.%d", data[0], data[1], data[2], data[3]);
+		pr_attr(name, "%d.%d.%d.%d", data[0], data[1], data[2], WORD(data+3));
 		break;
 	case 15:
 		pr_attr(name, "%d.%d.%d.%d (%.2d/%.2d/%d)",
