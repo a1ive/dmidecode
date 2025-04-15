@@ -598,7 +598,7 @@ static void dmi_hp_216_version(u8 format, u8 *data)
 		pr_attr(name, "%08X", DWORD(data));
 		break;
 	case 18:
-		pr_attr(name, "%d.%2d", data[0], data[1]);
+		pr_attr(name, "%d.%02d", data[0], data[1]);
 		break;
 	case 3: /* fall through */
 	default:
