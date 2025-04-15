@@ -965,6 +965,27 @@ static void dmi_hp_245_pcie_riser(const struct dmi_header *h)
 	pr_attr("Riser Name", dmi_string(h, data[0x08]));
 }
 
+static void dmi_hp_245_pcie_mhs_riser(const struct dmi_header *h)
+{
+	u8 *data = h->data;
+	u8 i, count;
+	int len = h->length;
+
+	pr_attr("Board Type", "PCIe Riser (MHS Platform)");
+	if (h->length < 0x0B) return;
+	pr_attr("Riser ID", "%d", data[0x05]);
+	if (data[0x06])
+		pr_attr("Firmware Version", "%x.%x", data[0x06], data[0x07]);
+	pr_attr("Downgradable", "%s", data[0x08] & 0x01 ? "Yes" : "No");
+	pr_attr("Riser Name", dmi_string(h, data[0x09]));
+	count = data[0x0A];
+	pr_attr("Slot Count", "%d", count);
+	pr_list_start("Slot IDs", NULL);
+	for (i = 0; (i < count) && ((0x0B + i) < len); i++)
+		pr_list_item("0x%x", data[0x0B + i]);
+	pr_list_end();
+}
+
 static int dmi_decode_hp(const struct dmi_header *h)
 {
 	u8 *data = h->data;
@@ -1713,18 +1734,33 @@ static int dmi_decode_hp(const struct dmi_header *h)
 			 *  0x00  | Type       | BYTE  | 0xF5, Extension Board Inventory Record
 			 *  0x01  | Length     | BYTE  | Length of structure
 			 *  0x02  | Handle     | WORD  | Unique handle
-			 *  0x04  | Board Type | WORD  | 0: PCIe Riser, Other Reserved
+			 *  0x04  | Board Type | WORD  | See below
 			 *
 			 *  If Board Type == 0
 			 *  0x05  | Riser Pos  | WORD  |
 			 *  0x06  | Riser ID   | BYTE  |
 			 *  0x07  | CPLD Vers  | BTYE  | 0-> No CPLD. Bits [7][6:0] Release:Vers
 			 *  0x08  | Riser Name | STRING|
+			 *
+			 *  If Board Type == 1
+			 *  0x05  | Riser ID       | BYTE  |
+			 *  0x06  | Riser FW Major | BYTE  |
+			 *  0x07  | Riser FW Minor | BYTE  |
+			 *  0x08  | Misc Attr      | BYTE  |
+			 *  0x09  | Riser Name     | STRING|
+			 *  0x0A  | Slot Count     | BYTE  |
+			 *  0x0B  | Slot ID        | Varies| One per slot
 			 */
 			pr_handle_name("%s ProLiant Extension Board Inventory Record", company);
 			if (h->length < 0x05) break;
-			if (data[0x04] == 0)
+			switch (data[0x04]) {
+			case 0:
 				dmi_hp_245_pcie_riser(h);
+				break;
+			case 1:
+				dmi_hp_245_pcie_mhs_riser(h);
+				break;
+			}
 			break;
 
 		default:
