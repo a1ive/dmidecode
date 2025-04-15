@@ -470,8 +470,8 @@ static void dmi_hp_216_fw_type(u16 code)
 		"SPI Descriptor Version",
 		"Innovation Engine Firmware (IE Firmware)",
 		"UMB Backplane Firmware",
-		"Reserved", /* 0x14 */
-		"Reserved",
+		"Embedded Diagnostics",
+		"Reserved", /* 0x15 */
 		"Reserved",
 		"Reserved",
 		"Reserved",
@@ -514,6 +514,10 @@ static void dmi_hp_216_fw_type(u16 code)
 		"Power Distribution Board CPLD",
 		"PCIe Switch Board CPLD",
 		"Sideband Board CPLD",
+		"PCIe Riser MCU Firmware", /* 0x40 */
+		"PCIe Switch Board Firmware",
+		"Power Supply Firmware",
+		"BMC Firmware",
 	};
 
 	if (code < ARRAY_SIZE(type))
@@ -599,6 +603,12 @@ static void dmi_hp_216_version(u8 format, u8 *data)
 		break;
 	case 18:
 		pr_attr(name, "%d.%02d", data[0], data[1]);
+		break;
+	case 19:
+		pr_attr(name, "0x%02x.0x%02x.0x%02x", data[0], data[1], data[2]);
+		break;
+	case 20:
+		pr_attr(name, "%d.%d.%d.%d", data[0], data[1], data[2], data[3]);
 		break;
 	case 3: /* fall through */
 	default:
