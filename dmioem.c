@@ -141,7 +141,7 @@ static void dmi_dell_bios_flags(u64 flags)
 	/*
 	 * TODO: The meaning of the other bits is unknown.
 	 */
-	pr_attr("ACPI WMI Supported", "%s", (flags.l & (1 << 1)) ? "Yes" : "No");
+	pr_attr("ACPI WMI Supported", "%s", (flags & (1ULL << 1)) ? "Yes" : "No");
 }
 
 static void dmi_dell_hotkeys(const struct dmi_header *h)
@@ -878,9 +878,9 @@ static void dmi_hp_240_attr(u64 defined, u64 set)
 	pr_list_start("Attributes Defined/Set", NULL);
 	for (i = 0; i < ARRAY_SIZE(attributes); i++)
 	{
-		if (!(defined.l & (1UL << i)))
+		if (!(defined & (1ULL << i)))
 			continue;
-		pr_list_item("%s: %s", attributes[i], set.l & (1UL << i) ? "Yes" : "No");
+		pr_list_item("%s: %s", attributes[i], set & (1ULL << i) ? "Yes" : "No");
 	}
 	pr_list_end();
 }
@@ -1277,11 +1277,8 @@ static int dmi_decode_hp(const struct dmi_header *h)
 			if (DWORD(data + 0x04) == 0x55524324)
 			{
 				u64 paddr = QWORD(data + 0x08);
-				paddr.l += DWORD(data + 0x14);
-				if (paddr.l < DWORD(data + 0x14))
-					paddr.h++;
-				pr_attr("Physical Address", "0x%08x%08x",
-					paddr.h, paddr.l);
+				paddr += DWORD(data + 0x14);
+				pr_attr("Physical Address", "0x%016llx", paddr);
 				pr_attr("Length", "0x%08x", DWORD(data + 0x10));
 			}
 			break;
