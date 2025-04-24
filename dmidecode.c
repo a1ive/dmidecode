@@ -273,19 +273,19 @@ static void dmi_dump(const struct dmi_header *h)
 	}
 }
 
-/* shift is 0 if the value is in bytes, 1 if it is in kilobytes */
+/* shift is 0 if the value is in bytes, 1 if it is in kibibytes */
 void dmi_print_memory_size(const char *attr, u64 code, int shift)
 {
 	unsigned long capacity;
 	u16 split[7];
 	static const char *unit[8] = {
-		"bytes", "kB", "MB", "GB", "TB", "PB", "EB", "ZB"
+		"bytes", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB"
 	};
 	int i;
 
 	/*
-	 * We split the overall size in powers of thousand: EB, PB, TB, GB,
-	 * MB, kB and B. In practice, it is expected that only one or two
+	 * We split the overall size in powers of 1024: EiB, PiB, TiB, GiB,
+	 * MiB, KiB and B. In practice, it is expected that only one or two
 	 * (consecutive) of these will be non-zero.
 	 */
 	split[0] = code.l & 0x3FFUL;
@@ -331,7 +331,7 @@ static void dmi_bios_runtime_size(u32 code)
 	}
 	else
 	{
-		format = "%u kB";
+		format = "%u KiB";
 		code >>= 10;
 	}
 
@@ -341,7 +341,7 @@ static void dmi_bios_runtime_size(u32 code)
 static void dmi_bios_rom_size(u8 code1, u16 code2)
 {
 	static const char *unit[4] = {
-		"MB", "GB", out_of_spec, out_of_spec
+		"MiB", "GiB", out_of_spec, out_of_spec
 	};
 
 	if (code1 != 0xFF)
@@ -1725,7 +1725,7 @@ static void dmi_memory_module_size(const char *attr, u8 code)
 			pr_attr(attr, "Not Installed");
 			return;
 		default:
-			pr_attr(attr, "%u MB%s", 1 << (code & 0x7F),
+			pr_attr(attr, "%u MiB%s", 1 << (code & 0x7F),
 				connection);
 	}
 }
@@ -2783,11 +2783,11 @@ static void dmi_memory_device_extended_size(u32 code)
 	 * as an integer without rounding
 	 */
 	if (code & 0x3FFUL)
-		pr_attr("Size", "%lu MB", (unsigned long)code);
+		pr_attr("Size", "%lu MiB", (unsigned long)code);
 	else if (code & 0xFFC00UL)
-		pr_attr("Size", "%lu GB", (unsigned long)code >> 10);
+		pr_attr("Size", "%lu GiB", (unsigned long)code >> 10);
 	else
-		pr_attr("Size", "%lu TB", (unsigned long)code >> 20);
+		pr_attr("Size", "%lu TiB", (unsigned long)code >> 20);
 }
 
 static void dmi_memory_voltage_value(const char *attr, u16 code)
@@ -4660,9 +4660,9 @@ static void dmi_decode(const struct dmi_header *h, u16 ver)
 				dmi_memory_controller_interleave(data[0x06]));
 			pr_attr("Current Interleave", "%s",
 				dmi_memory_controller_interleave(data[0x07]));
-			pr_attr("Maximum Memory Module Size", "%u MB",
+			pr_attr("Maximum Memory Module Size", "%u MiB",
 				1 << data[0x08]);
-			pr_attr("Maximum Total Memory Size", "%u MB",
+			pr_attr("Maximum Total Memory Size", "%u MiB",
 				data[0x0E] * (1 << data[0x08]));
 			dmi_memory_controller_speeds("Supported Speeds",
 						     WORD(data + 0x09));
