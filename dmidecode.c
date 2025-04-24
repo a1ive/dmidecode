@@ -3147,7 +3147,7 @@ static void dmi_mapped_address_extended_size(u64 start, u64 end)
 	if (start == end)
 		pr_attr("Range Size", "Invalid");
 	else
-		dmi_print_memory_size("Range Size", u64_range(start, end), 0);
+		dmi_print_memory_size("Range Size", end - start + 1, 0);
 }
 
 /*

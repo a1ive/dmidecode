@@ -261,9 +261,3 @@ out:
 
 	return p;
 }
-
-/* Returns end - start + 1, assuming start < end */
-u64 u64_range(u64 start, u64 end)
-{
-	return end - start + 1;
-}
