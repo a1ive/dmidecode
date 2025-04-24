@@ -4989,9 +4989,9 @@ static void dmi_decode(const struct dmi_header *h, u16 ver)
 				start = QWORD(data + 0x0F);
 				end = QWORD(data + 0x17);
 
-				pr_attr("Starting Address", "0x%08X%08Xk",
+				pr_attr("Starting Address", "0x%08X%08X",
 					start.h, start.l);
-				pr_attr("Ending Address", "0x%08X%08Xk",
+				pr_attr("Ending Address", "0x%08X%08X",
 					end.h, end.l);
 				dmi_mapped_address_extended_size(start, end);
 			}
@@ -5022,9 +5022,9 @@ static void dmi_decode(const struct dmi_header *h, u16 ver)
 				start = QWORD(data + 0x13);
 				end = QWORD(data + 0x1B);
 
-				pr_attr("Starting Address", "0x%08X%08Xk",
+				pr_attr("Starting Address", "0x%08X%08X",
 					start.h, start.l);
-				pr_attr("Ending Address", "0x%08X%08Xk",
+				pr_attr("Ending Address", "0x%08X%08X",
 					end.h, end.l);
 				dmi_mapped_address_extended_size(start, end);
 			}
