@@ -1523,7 +1523,7 @@ static int dmi_decode_hp(const struct dmi_header *h)
 			 *  0x0F  | PCI Seg    | WORD  | PCI Segment number of the USB controller
 			 */
 			if (gen < G9) return 0;
-			pr_handle_name("%s Proliant USB Port Connector Correlation Record", company);
+			pr_handle_name("%s ProLiant USB Port Connector Correlation Record", company);
 			if (h->length < 0x0F) break;
 			if (!(opt.flags & FLAG_QUIET))
 				pr_attr("Associated Handle", "0x%04X", WORD(data + 0x4));
@@ -1595,7 +1595,7 @@ static int dmi_decode_hp(const struct dmi_header *h)
 
 		case 240:
 			/*
-			 * Vendor Specific: HPE Proliant Inventory Record
+			 * Vendor Specific: HPE ProLiant Inventory Record
 			 *
 			 * Reports firmware version information for devices that report their
 			 * firmware using their UEFI drivers. Additionally provides association
@@ -1615,7 +1615,7 @@ static int dmi_decode_hp(const struct dmi_header *h)
 			 *  0x1B  | Attr Set   | QWORD | BitField: If defined, is attribute set?
 			 *  0x23  | Version    | DWORD | Lowest supported version.
 			 */
-			pr_handle_name("%s Proliant Inventory Record", company);
+			pr_handle_name("%s ProLiant Inventory Record", company);
 			if (h->length < 0x27) break;
 			if (!(opt.flags & FLAG_QUIET))
 				pr_attr("Associated Handle", "0x%04X", WORD(data + 0x4));
