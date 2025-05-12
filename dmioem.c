@@ -1679,9 +1679,9 @@ static int dmi_decode_hp(const struct dmi_header *h)
 			dmi_hp_242_hdd_type(data[0x06]);
 			pr_attr("ID", "%llx", QWORD(data + 0x07));
 			if (h->length < 0x3E)
-				pr_attr("Capacity", "%u MB", DWORD(data + 0x0F));
+				dmi_print_storage_size("Capacity", DWORD(data + 0x0F), 2);
 			else
-				dmi_print_memory_size("Capacity", QWORD(data + 0x2C), 0);
+				dmi_print_storage_size("Capacity", QWORD(data + 0x2C), 0);
 			/* NB: Poweron low QWORD good for 2,104,351,365,926,255 years */
 			pr_attr("Poweron", "%ld hours", QWORD(data + 0x13));
 			if (data[0x24])

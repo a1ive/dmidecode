@@ -317,6 +317,28 @@ void dmi_print_memory_size(const char *attr, u64 code, int shift)
 	pr_attr(attr, "%lu %s", capacity, unit[i + shift]);
 }
 
+/* shift is 0 if the value is in bytes, 1 if it is in kB, 2 if it is in MB */
+void dmi_print_storage_size(const char *attr, u64 code, unsigned int shift)
+{
+	u64 div;
+	static const char *unit[8] = {
+		"bytes", "kB", "MB", "GB", "TB", "PB", "EB", "ZB"
+	};
+
+	/*
+	 * We want to choose the unit which will let us display a number
+	 * between 1.0 and 999.9.
+	 */
+	div = 1;
+	while (code / div >= 1000 && shift + 1 < ARRAY_SIZE(unit))
+	{
+		shift++;
+		div *= 1000;
+	}
+
+	pr_attr(attr, "%.1f %s", (float)code / div, unit[shift]);
+}
+
 /*
  * 7.1 BIOS Information (Type 0)
  */
