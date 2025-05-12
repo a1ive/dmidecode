@@ -1673,7 +1673,7 @@ static int dmi_decode_hp(const struct dmi_header *h)
 			 */
 			if (gen < G10) return 0;
 			pr_handle_name("%s ProLiant Hard Drive Inventory Record", company);
-			if (h->length < 0x2C) break;
+			if (h->length < 0x2A) break;
 			if (!(opt.flags & FLAG_QUIET))
 				pr_attr("Associated Handle", "0x%04X", WORD(data + 0x4));
 			dmi_hp_242_hdd_type(data[0x06]);
@@ -1697,6 +1697,7 @@ static int dmi_decode_hp(const struct dmi_header *h)
 			pr_attr("Serial Number", dmi_string(h, data[0x27]));
 			pr_attr("Model Number", dmi_string(h, data[0x28]));
 			pr_attr("Firmware Revision", dmi_string(h, data[0x29]));
+			if (h->length < 0x2C) break;
 			pr_attr("Location", dmi_string(h, data[0x2A]));
 			feat = data[0x2B];
 			pr_attr("Encryption Status", "%s", (feat == 0) ? "Not Encrypted" :
