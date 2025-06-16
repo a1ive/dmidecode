@@ -24,40 +24,18 @@
 
 #include "windmi.h"
 
-static UINT
-get_fw_table(DWORD fw_table_sig, DWORD fw_table_id,
-	PVOID buf, DWORD size)
-{
-	UINT(WINAPI * pfn_get_fw_table)
-		(DWORD fw_table_sig, DWORD fw_table_id, PVOID buf, DWORD size) = NULL;
-	HMODULE h_mod = GetModuleHandleW(L"kernel32");
-
-	if (h_mod)
-		*(FARPROC*)&pfn_get_fw_table = GetProcAddress(h_mod, "GetSystemFirmwareTable");
-
-	if (pfn_get_fw_table)
-		return pfn_get_fw_table(fw_table_sig, fw_table_id, buf, size);
-
-	// TODO: Support NT5
-#if 0
-	if (fw_table_sig == 'RSMB')
-		return NT5GetSmbios(buf, size);
-#endif
-
-	return 0;
-}
-
 struct raw_smbios_data* dmi_get_smbios(void)
 {
 	struct raw_smbios_data* smbios_data = NULL;
 	DWORD smbios_size = 0;
-	smbios_size = get_fw_table('RSMB', 0, NULL, 0);
+	// YY-Thunks has provided wrappers for GetSystemFirmwareTable
+	smbios_size = GetSystemFirmwareTable('RSMB', 0, NULL, 0);
 	if (smbios_size == 0)
 		return NULL;
 	smbios_data = (struct raw_smbios_data*)malloc(smbios_size);
 	if (!smbios_data)
 		return NULL;
-	smbios_size = get_fw_table('RSMB', 0, smbios_data, smbios_size);
+	smbios_size = GetSystemFirmwareTable('RSMB', 0, smbios_data, smbios_size);
 	if (smbios_size == 0)
 	{
 		free(smbios_data);
