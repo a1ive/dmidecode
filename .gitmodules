@@ -1,0 +1,3 @@
+[submodule "dmidecode"]
+	path = dmidecode
+	url = https://git.savannah.gnu.org/git/dmidecode.git
