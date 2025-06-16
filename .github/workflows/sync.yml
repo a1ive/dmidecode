@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - sync
+      - main
 
 jobs:
   repo-sync:
@@ -20,5 +20,5 @@ jobs:
       with:
         source_repo: "https://git.savannah.gnu.org/git/dmidecode.git"
         source_branch: "master"
-        destination_branch: "master"
+        destination_branch: "mirror"
         github_token: ${{ secrets.GITHUB_TOKEN }}
