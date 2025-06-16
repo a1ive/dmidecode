@@ -25,7 +25,7 @@
 #include <io.h>
 #include <sys/stat.h>
 
-#include "winopen.h"
+#include "wincompact.h"
 
 int my_open(const char* pathname, int flags, ...)
 {

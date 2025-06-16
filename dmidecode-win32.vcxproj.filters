@@ -113,8 +113,11 @@
     <ClInclude Include="windmi\strings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\winopen.h">
+    <ClInclude Include="windmi\wincompact.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

@@ -21,9 +21,4 @@
 #ifndef ARPA_INET_H
 #define ARPA_INET_H
 
-#include "sys/socket.h"
-
-const char*
-inet_ntop(int af, const void* restrict a0, char* restrict s, socklen_t l);
-
 #endif // ARPA_INET_H

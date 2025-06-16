@@ -21,8 +21,15 @@
 #ifndef WINOPEN_H
 #define WINOPEN_H
 
+#include "sys/socket.h"
+
 int my_open(const char* pathname, int flags, ...);
 
 #define open my_open
+
+const char*
+my_inet_ntop(int af, const void* restrict a0, char* restrict s, socklen_t l);
+
+#define inet_ntop my_inet_ntop
 
 #endif // WINOPEN_H

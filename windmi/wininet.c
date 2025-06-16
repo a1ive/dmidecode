@@ -25,8 +25,10 @@
 #include <errno.h>
 #include <string.h>
 
+#include "wincompact.h"
+
 const char*
-inet_ntop(int af, const void* restrict a0, char* restrict s, socklen_t l)
+my_inet_ntop(int af, const void* restrict a0, char* restrict s, socklen_t l)
 {
 	const unsigned char* a = a0;
 	int i, j, max, best;
