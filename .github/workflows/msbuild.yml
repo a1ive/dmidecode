@@ -9,13 +9,18 @@ on:
 env:
   # Path to the solution file relative to the root of the project.
   SOLUTION_FILE_PATH: .
+  # Define the artifact name for consistency
+  ARTIFACT_NAME: dmidecode
 
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        submodules: 'recursive'
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v2
@@ -31,19 +36,16 @@ jobs:
       run: |
         msbuild /m /p:Configuration=Release /p:platform=x64 ${{env.SOLUTION_FILE_PATH}}
         msbuild /m /p:Configuration=Release /p:platform=x86 ${{env.SOLUTION_FILE_PATH}}
-        md build
-        md build\x64
-        move x64\Release\dmidecode.exe build\x64\dmidecode.exe
-        md build\x86
-        move Win32\Release\dmidecode.exe build\x86\dmidecode.exe
-        copy LICENSE build\LICENSE
 
-    - name: Create ZIP
-      uses: thedoctor0/zip-release@master
-      with:
-        type: 'zip'
-        filename: 'dmidecode.zip'
-        directory: 'build'
+    - name: Stage artifacts for packaging
+      run: |
+        New-Item -Path "build/x64", "build/x86" -ItemType Directory -Force
+        Move-Item -Path "x64/Release/dmidecode.exe" -Destination "build/x64/dmidecode.exe"
+        Move-Item -Path "Win32/Release/dmidecode.exe" -Destination "build/x86/dmidecode.exe"
+        Copy-Item -Path "LICENSE" -Destination "build/LICENSE"
+
+    - name: Create ZIP Archive
+      run: Compress-Archive -Path build/* -DestinationPath "${{ env.ARTIFACT_NAME }}.zip"
 
     - name: Delete old release
       continue-on-error: true
@@ -53,9 +55,11 @@ jobs:
       env:
         GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
-    - name: Release
-      working-directory: ${{env.GITHUB_WORKSPACE}}
+    - name: Create new release
       run: |
-        gh release create latest build\dmidecode.zip --latest -t "Development Build"
+        gh release create latest "build/${{ env.ARTIFACT_NAME }}.zip" `
+          --latest `
+          --title "Development Build" `
+          --notes "Automated build from commit ${{ github.sha }}"
       env:
-        GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
