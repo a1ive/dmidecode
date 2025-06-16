@@ -39,6 +39,7 @@
 #include "../dmidecode/util.h"
 
 #include "windmi.h"
+#include "winring0.h"
 
 static int myread(FILE* fp, u8 *buf, size_t count, const char *prefix)
 {
@@ -161,7 +162,33 @@ out:
  */
 void *mem_chunk(off_t base, size_t len, const char *devmem)
 {
-	// TODO: Read physical memory.
 	//fprintf(stdout, "mem_chunk: %llx %zu %s\n", (unsigned long long)base, len, devmem);
-	return NULL;
+	if (base == 0 || len == 0)
+		return NULL;
+	
+	struct wr0_drv_t* drv = wr0_driver_open();
+	if (drv == NULL)
+	{
+		fprintf(stderr, "Failed to load WinRing0 driver\n");
+		return NULL;
+	}
+
+	void* buf = malloc(len);
+	if (buf == NULL)
+	{
+		perror("malloc");
+		wr0_driver_close(drv);
+		return NULL;
+	}
+
+	if (wr0_read_phys_mem(drv, (unsigned long long)base, buf, (unsigned long)len) == 0)
+	{
+		fprintf(stderr, "Failed to read physical memory at %llx\n", (unsigned long long)base);
+		free(buf);
+		wr0_driver_close(drv);
+		return NULL;
+	}
+
+	wr0_driver_close(drv);
+	return buf;
 }

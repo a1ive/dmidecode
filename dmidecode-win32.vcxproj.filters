@@ -63,6 +63,9 @@
     <ClCompile Include="windmi\winopen.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="windmi\winring0.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dmidecode\config.h">
@@ -114,6 +117,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="windmi\wincompact.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windmi\winring0.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windmi\winring0_def.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
