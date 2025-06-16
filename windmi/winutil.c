@@ -124,8 +124,8 @@ void *read_file(off_t base, size_t *max_len, const char *filename)
 			p = NULL;
 			goto out;
 		}
-		if (*max_len > (size_t)statbuf.st_size - base)
-			*max_len = statbuf.st_size - base;
+		if (*max_len > (size_t)(statbuf.st_size - base))
+			*max_len = (size_t)(statbuf.st_size - base);
 	}
 
 	if ((p = malloc(*max_len)) == NULL)

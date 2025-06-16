@@ -57,7 +57,7 @@ jobs:
 
     - name: Create new release
       run: |
-        gh release create latest "build/${{ env.ARTIFACT_NAME }}.zip" `
+        gh release create latest "${{ env.ARTIFACT_NAME }}.zip" `
           --latest `
           --title "Development Build" `
           --notes "Automated build from commit ${{ github.sha }}"

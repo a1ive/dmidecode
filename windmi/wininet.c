@@ -74,7 +74,7 @@ my_inet_ntop(int af, const void* restrict a0, char* restrict s, socklen_t l)
 			buf[best] = buf[best + 1] = ':';
 			memmove(buf + best + 2, buf + best + max, i - best - max + 1);
 		}
-		if (strlen(buf) < l)
+		if (strlen(buf) < (size_t)l)
 		{
 			strcpy(s, buf);
 			return s;
