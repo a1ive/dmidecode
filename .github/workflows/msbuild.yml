@@ -20,6 +20,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
+        fetch-depth: 0
         submodules: 'recursive'
 
     - name: Add MSBuild to PATH
@@ -47,6 +48,26 @@ jobs:
     - name: Create ZIP Archive
       run: Compress-Archive -Path build/* -DestinationPath "${{ env.ARTIFACT_NAME }}.zip"
 
+    - name: Generate Release Notes
+      id: generate_notes
+      run: |
+        $changelog = ""
+        if ("${{ github.event_name }}" -eq "push") {
+          Write-Host "Generating changelog for push event between ${{ github.event.before }} and ${{ github.sha }}"
+          $changelog = git log --pretty=format:'* %s (%h) by @%an' ${{ github.event.before }}..${{ github.sha }}
+        }
+        else {
+          Write-Host "Generating changelog for workflow_dispatch event (latest commit)"
+          $changelog = git log --pretty=format:'* %s (%h) by @%an' -n 1
+        }
+        if ([string]::IsNullOrWhiteSpace($changelog)) {
+          $changelog = "No new commits in this push. Automated build from commit ${{ github.sha }}."
+        }
+        $delimiter = "RELEASE_NOTES_$(Get-Random)"
+        "CHANGELOG_BODY<<$delimiter" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+        $changelog | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+        "$delimiter" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
     - name: Delete old release
       continue-on-error: true
       working-directory: ${{env.GITHUB_WORKSPACE}}
@@ -59,7 +80,7 @@ jobs:
       run: |
         gh release create latest "${{ env.ARTIFACT_NAME }}.zip" `
           --latest `
-          --title "Development Build" `
-          --notes "Automated build from commit ${{ github.sha }}"
+          --title "Development Build (${{ github.sha }})" `
+          --notes "${{ env.CHANGELOG_BODY }}"
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
