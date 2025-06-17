@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="dmidecode">
+      <UniqueIdentifier>{7C86832B-7489-43FF-8095-524F48667E0A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{AA50E876-8E9B-4568-B1A4-58B8C8127E20}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{71267EDC-0061-4B42-B3C5-A8955B2D8061}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{8E5AA48E-E307-46FE-BD26-0150090512E8}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="windmi\windmi.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windmi\wingetopt.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windmi\wininet.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windmi\winstr.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windmi\winutil.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windmi\winopen.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="windmi\winring0.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="dmidecode\config.h">
+      <Filter>dmidecode</Filter>
+    </ClInclude>
+    <ClInclude Include="dmidecode\types.h">
+      <Filter>dmidecode</Filter>
+    </ClInclude>
+    <ClInclude Include="dmidecode\util.h">
+      <Filter>dmidecode</Filter>
+    </ClInclude>
+    <ClInclude Include="dmidecode\version.h">
+      <Filter>dmidecode</Filter>
+    </ClInclude>
+    <ClInclude Include="windmi\windmi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windmi\wingetopt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windmi\unistd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windmi\arpa\inet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windmi\sys\socket.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windmi\getopt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windmi\strings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windmi\wincompact.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windmi\winring0.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="windmi\winring0_def.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

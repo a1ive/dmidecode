@@ -40,9 +40,17 @@ jobs:
 
     - name: Stage artifacts for packaging
       run: |
-        New-Item -Path "build/x64", "build/x86" -ItemType Directory -Force
-        Move-Item -Path "x64/Release/dmidecode.exe" -Destination "build/x64/dmidecode.exe"
-        Move-Item -Path "Win32/Release/dmidecode.exe" -Destination "build/x86/dmidecode.exe"
+        $executables = "dmidecode.exe", "biosdecode.exe", "ownership.exe", "vpddecode.exe"
+        $platformMap = @{
+            "x64/Release"   = "build/x64"
+            "Win32/Release" = "build/x86"
+        }
+        $platformMap.Values | ForEach-Object { New-Item -Path $_ -ItemType Directory -Force }
+        foreach ($entry in $platformMap.GetEnumerator()) {
+            foreach ($exe in $executables) {
+                Move-Item -Path "$($entry.Name)/$exe" -Destination "$($entry.Value)/"
+            }
+        }
         Copy-Item -Path "LICENSE" -Destination "build/LICENSE"
 
     - name: Create ZIP Archive
