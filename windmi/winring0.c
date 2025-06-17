@@ -28,6 +28,8 @@
 #include "winring0.h"
 #include "winring0_def.h"
 
+#pragma comment(lib,"pathcch.lib")
+
 struct wr0_drv_t
 {
 	LPCWSTR driver_name;
