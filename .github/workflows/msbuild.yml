@@ -87,10 +87,9 @@ jobs:
     - name: Create new release
       run: |
         $date_version = (Get-Date -Format 'yyyyMMdd') + ".${{ github.run_number }}"
-        "BUILD_VERSION=$date_version" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
         gh release create latest "${{ env.ARTIFACT_NAME }}.zip" `
           --latest `
-          --title "Development Build (${{ env.BUILD_VERSION }})" `
+          --title "Build $date_version" `
           --notes "${{ env.CHANGELOG_BODY }}"
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
