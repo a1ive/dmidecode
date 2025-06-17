@@ -42,9 +42,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="dmidecode\ownership.c">
       <Filter>ownership</Filter>
     </ClCompile>

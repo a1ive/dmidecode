@@ -45,9 +45,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="dmidecode\vpddecode.c">
       <Filter>vpddecode</Filter>
     </ClCompile>
