@@ -80,7 +80,7 @@ jobs:
       run: |
         gh release create latest "${{ env.ARTIFACT_NAME }}.zip" `
           --latest `
-          --title "Development Build (${{ github.sha }})" `
+          --title "Development Build (${{ github.short_sha }})" `
           --notes "${{ env.CHANGELOG_BODY }}"
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
