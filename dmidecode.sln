@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36203.30
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dmidecode", "dmidecode.vcxproj", "{F7B4CA47-09E8-49E5-87DC-17EC252FE614}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sharedfiles", "sharedfiles.vcxproj", "{78127EDB-3E51-4E4B-AD31-676048459F43}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{9FA3D6BD-1EC1-3BA5-80CB-CE02773A58D5}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\msbuild.yml = .github\workflows\msbuild.yml
@@ -14,11 +10,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{9F
 		.github\workflows\sync.yml = .github\workflows\sync.yml
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "biosdecode", "biosdecode.vcxproj", "{D8A9EA5F-E704-4D12-AD5E-3F23AE17795E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sharedfiles", "vcxproj\sharedfiles\sharedfiles.vcxproj", "{78127EDB-3E51-4E4B-AD31-676048459F43}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ownership", "ownership.vcxproj", "{5DF014D7-3CA0-447D-BA82-CE2C15A85C13}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "biosdecode", "vcxproj\biosdecode\biosdecode.vcxproj", "{D8A9EA5F-E704-4D12-AD5E-3F23AE17795E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vpddecode", "vpddecode.vcxproj", "{C55FCCD3-17C8-45C8-8D8F-05D17794AA99}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "dmidecode", "vcxproj\dmidecode\dmidecode.vcxproj", "{F7B4CA47-09E8-49E5-87DC-17EC252FE614}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ownership", "vcxproj\ownership\ownership.vcxproj", "{5DF014D7-3CA0-447D-BA82-CE2C15A85C13}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vpddecode", "vcxproj\vpddecode\vpddecode.vcxproj", "{C55FCCD3-17C8-45C8-8D8F-05D17794AA99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,14 +28,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F7B4CA47-09E8-49E5-87DC-17EC252FE614}.Debug|x64.ActiveCfg = Debug|x64
-		{F7B4CA47-09E8-49E5-87DC-17EC252FE614}.Debug|x64.Build.0 = Debug|x64
-		{F7B4CA47-09E8-49E5-87DC-17EC252FE614}.Debug|x86.ActiveCfg = Debug|Win32
-		{F7B4CA47-09E8-49E5-87DC-17EC252FE614}.Debug|x86.Build.0 = Debug|Win32
-		{F7B4CA47-09E8-49E5-87DC-17EC252FE614}.Release|x64.ActiveCfg = Release|x64
-		{F7B4CA47-09E8-49E5-87DC-17EC252FE614}.Release|x64.Build.0 = Release|x64
-		{F7B4CA47-09E8-49E5-87DC-17EC252FE614}.Release|x86.ActiveCfg = Release|Win32
-		{F7B4CA47-09E8-49E5-87DC-17EC252FE614}.Release|x86.Build.0 = Release|Win32
 		{78127EDB-3E51-4E4B-AD31-676048459F43}.Debug|x64.ActiveCfg = Debug|x64
 		{78127EDB-3E51-4E4B-AD31-676048459F43}.Debug|x64.Build.0 = Debug|x64
 		{78127EDB-3E51-4E4B-AD31-676048459F43}.Debug|x86.ActiveCfg = Debug|Win32
@@ -52,6 +44,14 @@ Global
 		{D8A9EA5F-E704-4D12-AD5E-3F23AE17795E}.Release|x64.Build.0 = Release|x64
 		{D8A9EA5F-E704-4D12-AD5E-3F23AE17795E}.Release|x86.ActiveCfg = Release|Win32
 		{D8A9EA5F-E704-4D12-AD5E-3F23AE17795E}.Release|x86.Build.0 = Release|Win32
+		{F7B4CA47-09E8-49E5-87DC-17EC252FE614}.Debug|x64.ActiveCfg = Debug|x64
+		{F7B4CA47-09E8-49E5-87DC-17EC252FE614}.Debug|x64.Build.0 = Debug|x64
+		{F7B4CA47-09E8-49E5-87DC-17EC252FE614}.Debug|x86.ActiveCfg = Debug|Win32
+		{F7B4CA47-09E8-49E5-87DC-17EC252FE614}.Debug|x86.Build.0 = Debug|Win32
+		{F7B4CA47-09E8-49E5-87DC-17EC252FE614}.Release|x64.ActiveCfg = Release|x64
+		{F7B4CA47-09E8-49E5-87DC-17EC252FE614}.Release|x64.Build.0 = Release|x64
+		{F7B4CA47-09E8-49E5-87DC-17EC252FE614}.Release|x86.ActiveCfg = Release|Win32
+		{F7B4CA47-09E8-49E5-87DC-17EC252FE614}.Release|x86.Build.0 = Release|Win32
 		{5DF014D7-3CA0-447D-BA82-CE2C15A85C13}.Debug|x64.ActiveCfg = Debug|x64
 		{5DF014D7-3CA0-447D-BA82-CE2C15A85C13}.Debug|x64.Build.0 = Debug|x64
 		{5DF014D7-3CA0-447D-BA82-CE2C15A85C13}.Debug|x86.ActiveCfg = Debug|Win32

@@ -16,63 +16,63 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dmidecode\dmidecode.c">
+    <ClCompile Include="$(SolutionDir)dmidecode\dmioem.c">
       <Filter>dmidecode</Filter>
     </ClCompile>
-    <ClCompile Include="dmidecode\dmioem.c">
+    <ClCompile Include="$(SolutionDir)dmidecode\dmiopt.c">
       <Filter>dmidecode</Filter>
     </ClCompile>
-    <ClCompile Include="dmidecode\dmiopt.c">
+    <ClCompile Include="$(SolutionDir)dmidecode\dmioutput.c">
       <Filter>dmidecode</Filter>
     </ClCompile>
-    <ClCompile Include="dmidecode\dmioutput.c">
+    <ClCompile Include="$(SolutionDir)dmidecode\dmidecode.c">
       <Filter>dmidecode</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="windmi\wingetopt.h">
+    <ClInclude Include="$(SolutionDir)windmi\wingetopt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\unistd.h">
+    <ClInclude Include="$(SolutionDir)windmi\unistd.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\arpa\inet.h">
+    <ClInclude Include="$(SolutionDir)windmi\arpa\inet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\sys\socket.h">
+    <ClInclude Include="$(SolutionDir)windmi\sys\socket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\getopt.h">
+    <ClInclude Include="$(SolutionDir)windmi\getopt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\strings.h">
+    <ClInclude Include="$(SolutionDir)windmi\strings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\wincompact.h">
+    <ClInclude Include="$(SolutionDir)windmi\wincompact.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dmidecode\dmidecode.h">
+    <ClInclude Include="$(SolutionDir)dmidecode\dmidecode.h">
       <Filter>dmidecode</Filter>
     </ClInclude>
-    <ClInclude Include="dmidecode\dmioem.h">
+    <ClInclude Include="$(SolutionDir)dmidecode\dmioem.h">
       <Filter>dmidecode</Filter>
     </ClInclude>
-    <ClInclude Include="dmidecode\dmiopt.h">
+    <ClInclude Include="$(SolutionDir)dmidecode\dmiopt.h">
       <Filter>dmidecode</Filter>
     </ClInclude>
-    <ClInclude Include="dmidecode\dmioutput.h">
+    <ClInclude Include="$(SolutionDir)dmidecode\dmioutput.h">
       <Filter>dmidecode</Filter>
     </ClInclude>
-    <ClInclude Include="dmidecode\config.h">
+    <ClInclude Include="$(SolutionDir)dmidecode\config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dmidecode\types.h">
+    <ClInclude Include="$(SolutionDir)dmidecode\types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dmidecode\util.h">
+    <ClInclude Include="$(SolutionDir)dmidecode\util.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dmidecode\version.h">
+    <ClInclude Include="$(SolutionDir)dmidecode\version.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

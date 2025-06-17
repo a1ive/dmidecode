@@ -16,33 +16,33 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="windmi\wingetopt.h">
+    <ClInclude Include="$(SolutionDir)windmi\wingetopt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\unistd.h">
+    <ClInclude Include="$(SolutionDir)windmi\unistd.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\getopt.h">
+    <ClInclude Include="$(SolutionDir)windmi\getopt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\strings.h">
+    <ClInclude Include="$(SolutionDir)windmi\strings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dmidecode\config.h">
+    <ClInclude Include="$(SolutionDir)dmidecode\config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dmidecode\types.h">
+    <ClInclude Include="$(SolutionDir)dmidecode\types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dmidecode\util.h">
+    <ClInclude Include="$(SolutionDir)dmidecode\util.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dmidecode\version.h">
+    <ClInclude Include="$(SolutionDir)dmidecode\version.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dmidecode\biosdecode.c">
+    <ClCompile Include="$(SolutionDir)dmidecode\biosdecode.c">
       <Filter>biosdecode</Filter>
     </ClCompile>
   </ItemGroup>

@@ -18,69 +18,69 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="windmi\windmi.c">
+    <ClCompile Include="$(SolutionDir)windmi\windmi.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="windmi\wingetopt.c">
+    <ClCompile Include="$(SolutionDir)windmi\wingetopt.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="windmi\wininet.c">
+    <ClCompile Include="$(SolutionDir)windmi\wininet.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="windmi\winstr.c">
+    <ClCompile Include="$(SolutionDir)windmi\winstr.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="windmi\winutil.c">
+    <ClCompile Include="$(SolutionDir)windmi\winutil.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="windmi\winopen.c">
+    <ClCompile Include="$(SolutionDir)windmi\winopen.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="windmi\winring0.c">
+    <ClCompile Include="$(SolutionDir)windmi\winring0.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dmidecode\config.h">
+    <ClInclude Include="$(SolutionDir)dmidecode\config.h">
       <Filter>dmidecode</Filter>
     </ClInclude>
-    <ClInclude Include="dmidecode\types.h">
+    <ClInclude Include="$(SolutionDir)dmidecode\types.h">
       <Filter>dmidecode</Filter>
     </ClInclude>
-    <ClInclude Include="dmidecode\util.h">
+    <ClInclude Include="$(SolutionDir)dmidecode\util.h">
       <Filter>dmidecode</Filter>
     </ClInclude>
-    <ClInclude Include="dmidecode\version.h">
+    <ClInclude Include="$(SolutionDir)dmidecode\version.h">
       <Filter>dmidecode</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\windmi.h">
+    <ClInclude Include="$(SolutionDir)windmi\windmi.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\wingetopt.h">
+    <ClInclude Include="$(SolutionDir)windmi\wingetopt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\unistd.h">
+    <ClInclude Include="$(SolutionDir)windmi\unistd.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\arpa\inet.h">
+    <ClInclude Include="$(SolutionDir)windmi\arpa\inet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\sys\socket.h">
+    <ClInclude Include="$(SolutionDir)windmi\sys\socket.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\getopt.h">
+    <ClInclude Include="$(SolutionDir)windmi\getopt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\strings.h">
+    <ClInclude Include="$(SolutionDir)windmi\strings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\wincompact.h">
+    <ClInclude Include="$(SolutionDir)windmi\wincompact.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\winring0.h">
+    <ClInclude Include="$(SolutionDir)windmi\winring0.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="windmi\winring0_def.h">
+    <ClInclude Include="$(SolutionDir)windmi\winring0_def.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

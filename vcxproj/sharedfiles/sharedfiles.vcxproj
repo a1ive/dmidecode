@@ -170,29 +170,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="windmi\wingetopt.c" />
-    <ClCompile Include="windmi\wininet.c" />
-    <ClCompile Include="windmi\winopen.c" />
-    <ClCompile Include="windmi\winring0.c" />
-    <ClCompile Include="windmi\winstr.c" />
-    <ClCompile Include="windmi\windmi.c" />
-    <ClCompile Include="windmi\winutil.c" />
+    <ClCompile Include="$(SolutionDir)windmi\wingetopt.c" />
+    <ClCompile Include="$(SolutionDir)windmi\wininet.c" />
+    <ClCompile Include="$(SolutionDir)windmi\winopen.c" />
+    <ClCompile Include="$(SolutionDir)windmi\winring0.c" />
+    <ClCompile Include="$(SolutionDir)windmi\winstr.c" />
+    <ClCompile Include="$(SolutionDir)windmi\windmi.c" />
+    <ClCompile Include="$(SolutionDir)windmi\winutil.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dmidecode\config.h" />
-    <ClInclude Include="dmidecode\types.h" />
-    <ClInclude Include="dmidecode\util.h" />
-    <ClInclude Include="dmidecode\version.h" />
-    <ClInclude Include="windmi\arpa\inet.h" />
-    <ClInclude Include="windmi\getopt.h" />
-    <ClInclude Include="windmi\strings.h" />
-    <ClInclude Include="windmi\wingetopt.h" />
-    <ClInclude Include="windmi\sys\socket.h" />
-    <ClInclude Include="windmi\unistd.h" />
-    <ClInclude Include="windmi\windmi.h" />
-    <ClInclude Include="windmi\wincompact.h" />
-    <ClInclude Include="windmi\winring0.h" />
-    <ClInclude Include="windmi\winring0_def.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\config.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\types.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\util.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\version.h" />
+    <ClInclude Include="$(SolutionDir)windmi\arpa\inet.h" />
+    <ClInclude Include="$(SolutionDir)windmi\getopt.h" />
+    <ClInclude Include="$(SolutionDir)windmi\strings.h" />
+    <ClInclude Include="$(SolutionDir)windmi\wingetopt.h" />
+    <ClInclude Include="$(SolutionDir)windmi\sys\socket.h" />
+    <ClInclude Include="$(SolutionDir)windmi\unistd.h" />
+    <ClInclude Include="$(SolutionDir)windmi\windmi.h" />
+    <ClInclude Include="$(SolutionDir)windmi\wincompact.h" />
+    <ClInclude Include="$(SolutionDir)windmi\winring0.h" />
+    <ClInclude Include="$(SolutionDir)windmi\winring0_def.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

@@ -21,10 +21,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{D8A9EA5F-E704-4D12-AD5E-3F23AE17795E}</ProjectGuid>
+    <ProjectGuid>{f7b4ca47-09e8-49e5-87dc-17ec252fe614}</ProjectGuid>
     <RootNamespace>dmidecodewin32</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>biosdecode</ProjectName>
+    <ProjectName>dmidecode</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -34,6 +34,7 @@
     <CharacterSet>Unicode</CharacterSet>
     <SupportLTL>true</SupportLTL>
     <WindowsTargetPlatformMinVersion>5.1.2600.0</WindowsTargetPlatformMinVersion>
+    <DisableAdvancedSupport>true</DisableAdvancedSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -43,6 +44,7 @@
     <CharacterSet>Unicode</CharacterSet>
     <SupportLTL>true</SupportLTL>
     <WindowsTargetPlatformMinVersion>5.1.2600.0</WindowsTargetPlatformMinVersion>
+    <DisableAdvancedSupport>true</DisableAdvancedSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -51,6 +53,7 @@
     <CharacterSet>Unicode</CharacterSet>
     <SupportLTL>true</SupportLTL>
     <WindowsTargetPlatformMinVersion>5.1.2600.0</WindowsTargetPlatformMinVersion>
+    <DisableAdvancedSupport>true</DisableAdvancedSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -60,6 +63,7 @@
     <CharacterSet>Unicode</CharacterSet>
     <SupportLTL>true</SupportLTL>
     <WindowsTargetPlatformMinVersion>5.1.2600.0</WindowsTargetPlatformMinVersion>
+    <DisableAdvancedSupport>true</DisableAdvancedSupport>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -170,27 +174,46 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="dmidecode\config.h" />
-    <ClInclude Include="dmidecode\types.h" />
-    <ClInclude Include="dmidecode\util.h" />
-    <ClInclude Include="dmidecode\version.h" />
-    <ClInclude Include="windmi\getopt.h" />
-    <ClInclude Include="windmi\strings.h" />
-    <ClInclude Include="windmi\wingetopt.h" />
-    <ClInclude Include="windmi\unistd.h" />
+    <ClCompile Include="$(SolutionDir)dmidecode\dmidecode.c">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)windmi\wincompact.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)windmi\wincompact.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(SolutionDir)windmi\wincompact.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(SolutionDir)windmi\wincompact.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4244;4267;4700;4996</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4244;4267;4700;4996</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4244;4267;4700;4996</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4244;4267;4700;4996</DisableSpecificWarnings>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)dmidecode\dmioem.c" />
+    <ClCompile Include="$(SolutionDir)dmidecode\dmiopt.c">
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4244;4267</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4244;4267</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4244;4267</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4244;4267</DisableSpecificWarnings>
+    </ClCompile>
+    <ClCompile Include="$(SolutionDir)dmidecode\dmioutput.c" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="sharedfiles.vcxproj">
+    <ClInclude Include="$(SolutionDir)dmidecode\config.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\dmidecode.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\dmioem.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\dmiopt.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\dmioutput.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\types.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\util.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\version.h" />
+    <ClInclude Include="$(SolutionDir)windmi\arpa\inet.h" />
+    <ClInclude Include="$(SolutionDir)windmi\getopt.h" />
+    <ClInclude Include="$(SolutionDir)windmi\strings.h" />
+    <ClInclude Include="$(SolutionDir)windmi\wingetopt.h" />
+    <ClInclude Include="$(SolutionDir)windmi\sys\socket.h" />
+    <ClInclude Include="$(SolutionDir)windmi\unistd.h" />
+    <ClInclude Include="$(SolutionDir)windmi\wincompact.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\sharedfiles\sharedfiles.vcxproj">
       <Project>{78127edb-3e51-4e4b-ad31-676048459f43}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="dmidecode\biosdecode.c">
-      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4267</DisableSpecificWarnings>
-      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4267</DisableSpecificWarnings>
-      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4267</DisableSpecificWarnings>
-      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4267</DisableSpecificWarnings>
-    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

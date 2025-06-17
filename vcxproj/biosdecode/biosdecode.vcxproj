@@ -21,10 +21,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{5DF014D7-3CA0-447D-BA82-CE2C15A85C13}</ProjectGuid>
+    <ProjectGuid>{D8A9EA5F-E704-4D12-AD5E-3F23AE17795E}</ProjectGuid>
     <RootNamespace>dmidecodewin32</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>ownership</ProjectName>
+    <ProjectName>biosdecode</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -170,22 +170,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="dmidecode\config.h" />
-    <ClInclude Include="dmidecode\types.h" />
-    <ClInclude Include="dmidecode\util.h" />
-    <ClInclude Include="dmidecode\version.h" />
-    <ClInclude Include="windmi\getopt.h" />
-    <ClInclude Include="windmi\strings.h" />
-    <ClInclude Include="windmi\wingetopt.h" />
-    <ClInclude Include="windmi\unistd.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\config.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\types.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\util.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\version.h" />
+    <ClInclude Include="$(SolutionDir)windmi\getopt.h" />
+    <ClInclude Include="$(SolutionDir)windmi\strings.h" />
+    <ClInclude Include="$(SolutionDir)windmi\wingetopt.h" />
+    <ClInclude Include="$(SolutionDir)windmi\unistd.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="sharedfiles.vcxproj">
+    <ClCompile Include="$(SolutionDir)dmidecode\biosdecode.c">
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4267</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4267</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">4267</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|x64'">4267</DisableSpecificWarnings>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\sharedfiles\sharedfiles.vcxproj">
       <Project>{78127edb-3e51-4e4b-ad31-676048459f43}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="dmidecode\ownership.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

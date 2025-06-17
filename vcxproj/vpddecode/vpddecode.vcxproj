@@ -170,24 +170,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="dmidecode\config.h" />
-    <ClInclude Include="dmidecode\types.h" />
-    <ClInclude Include="dmidecode\util.h" />
-    <ClInclude Include="dmidecode\version.h" />
-    <ClInclude Include="dmidecode\vpdopt.h" />
-    <ClInclude Include="windmi\getopt.h" />
-    <ClInclude Include="windmi\strings.h" />
-    <ClInclude Include="windmi\wingetopt.h" />
-    <ClInclude Include="windmi\unistd.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\config.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\types.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\util.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\version.h" />
+    <ClInclude Include="$(SolutionDir)dmidecode\vpdopt.h" />
+    <ClInclude Include="$(SolutionDir)windmi\getopt.h" />
+    <ClInclude Include="$(SolutionDir)windmi\strings.h" />
+    <ClInclude Include="$(SolutionDir)windmi\wingetopt.h" />
+    <ClInclude Include="$(SolutionDir)windmi\unistd.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="sharedfiles.vcxproj">
+    <ClCompile Include="$(SolutionDir)dmidecode\vpddecode.c" />
+    <ClCompile Include="$(SolutionDir)dmidecode\vpdopt.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\sharedfiles\sharedfiles.vcxproj">
       <Project>{78127edb-3e51-4e4b-ad31-676048459f43}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="dmidecode\vpddecode.c" />
-    <ClCompile Include="dmidecode\vpdopt.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
