@@ -1,21 +1,40 @@
-name: Sync
+name: Sync Submodule
 
 on:
   schedule:
-  - cron:  "10 */4 * * *"
+  - cron: "10 */4 * * *"
   workflow_dispatch:
 
 jobs:
-  repo-sync:
+  update-submodule:
     runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@master
 
-    - name: Sync repository
-      uses: repo-sync/github-sync@v2
+    permissions:
+      contents: write
+
+    steps:
+    - name: Checkout main branch
+      uses: actions/checkout@v4
       with:
-        source_repo: "https://git.savannah.gnu.org/git/dmidecode.git"
-        source_branch: "master"
-        destination_branch: "mirror"
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        ref: 'main'
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Configure Git
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+
+    - name: Update submodule to latest commit
+      run: |
+        git submodule update --init --remote --recursive
+
+    - name: Commit and push changes
+      run: |
+        if ! git diff --quiet; then
+          git add .
+          git commit -m "chore: Update dmidecode submodule"
+          git push
+          echo "Submodule updated and pushed."
+        else
+          echo "Submodule is already up-to-date."
+        fi
