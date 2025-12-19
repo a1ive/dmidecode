@@ -199,6 +199,7 @@
     <ClInclude Include="$(SolutionDir)windmi\wincompact.h" />
     <ClInclude Include="$(SolutionDir)windmi\winring0.h" />
     <ClInclude Include="$(SolutionDir)windmi\winring0_def.h" />
+    <ClInclude Include="$(SolutionDir)windmi\endian.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

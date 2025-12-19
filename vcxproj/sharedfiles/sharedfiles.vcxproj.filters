@@ -83,6 +83,9 @@
     <ClInclude Include="$(SolutionDir)windmi\winring0_def.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="$(SolutionDir)windmi\endian.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
