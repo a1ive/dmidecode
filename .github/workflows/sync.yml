@@ -34,7 +34,8 @@ jobs:
           git add .
           git commit -m "chore: Update dmidecode submodule"
           git push
-          echo "Submodule updated and pushed."
+          git -C dmidecode push origin HEAD:refs/heads/mirror
+          echo "Submodule updated, pushed, and mirrored."
         else
           echo "Submodule is already up-to-date."
         fi
